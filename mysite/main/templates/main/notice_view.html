@@ -41,7 +41,7 @@
 			</ul>
 		</div>
 		<!-- //bodytext_area -->
-		<form method="POST" id="rForm" name="rForm">{% csrf_token %}</form>
+		<form id="rForm" method="post" name="rForm">{% csrf_token %}</form>
 	</div>
 	<!-- //container -->
 	
@@ -49,7 +49,8 @@
 		function onRemoveClick(id){
 			if (confirm('정말 삭제 하시겠습니까?')){
 				let form = document.querySelector("#rForm");
-				form.setAttribute("action","/notice/remove/"+id);
+				console.log(form);
+				form.setAttribute("action", "/notice/remove/"+id);
 				form.submit();
 			}
 			return false;

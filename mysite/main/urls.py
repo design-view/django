@@ -1,13 +1,12 @@
-from django.contrib import admin
 from django.urls import path
+from . import views
 from .views import *
-# from . import views
 
 urlpatterns = [
-    path('', index),
+    path('',index),
     # path('', views.index, name='index'),
-    path('notice/',notice),
-    path('notice/<int:pk>',notice_view),
-    path('notice/add/',notice_add),
-    path('notice/remove/<int:pk>', notice_remove),
+    path('notice',notice),
+    path('notice/<int:pk>',noticeView, name="noticeView"),
+    path('notice/remove/<int:pk>',notice_remove),
+    path('notice/add/', notice_add)
 ]
