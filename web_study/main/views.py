@@ -5,45 +5,46 @@ from .models import Post
 def index(request):
     return render(request, 'main/index.html')
 
-def blog(request):
-    # 모든 데이터 변수에 저장 : models의 클래스이름.objects.all()
-    posts = Post.objects.all()
-    return render(request, 'main/blog.html', {'postlist':posts})
+def main(request):
+    return render(request, 'main/index.html')
 
-def posting(request,pk):
-    # primary key(pk) 를 이용하여 하나의 게시글만 검색
+# blog.html 페이지를 부르는 blog 함수
+def blog(request):
+    # 변수에 Post테이블에 있는 행을 담아줌
+    posts = Post.objects.all()
+    # view로 데이터를 전달 
+    return render(request, 'main/blog.html', {'postlist': posts})
+
+# blog의 게시글(posting)을 부르는 posting 함수
+def posting(request, pk):
+    # 게시글(Post) 중 pk(primary_key)를 이용해 하나의 게시글(post)를 검색
     post = Post.objects.get(pk=pk)
-    return render(request, 'main/posting.html',{'post':post})
+    # posting.html 페이지를 열 때, 찾아낸 게시글(post)을 post라는 이름으로 가져옴
+    return render(request, 'main/posting.html', {'post':post})
 
 def new_post(request):
-    # form태그의 method가 POST이면 데이터 추가를 실행, GET이면 new_post.html화면으로 이동
     if request.method == 'POST':
-        # 사진파일이 존재하는 확인, 있으면 사진 파일을 저장, 없으면 사진 파일 저장 안함.
         if request.POST['mainphoto']:
-            # postname, contents, mainphoto 데이터를 DB에 저장
             new_article = Post.objects.create(
-                # request.POST['name에 적은 값'] => 웹페이지에서 적은 값을 가지고오는 방식
                 postname = request.POST['postname'],
                 contents = request.POST['contents'],
-                mainphoto = request.POST['mainphoto'],
+                mainphoto = request.POST['mainphoto']
             )
         else:
-            # postname, contents 데이터를 DB에 저장
             new_article = Post.objects.create(
                 postname = request.POST['postname'],
                 contents = request.POST['contents'],
             )
-        # urls.py 파일에 있는 주소를 실행하는 기능
+        # urls.py파일에 있는 주소를 실행하는 기능 
         return redirect('/blog/')
     return render(request,'main/new_post.html')
 
 def remove_post(request, pk):
-    # 데이터베이스 삭제할 행을 변수에 저장
+    #데이터베이스 에서 삭제할 행을 변수에 저장
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
-        # 데이터베이스에서 post에 저장된 행을 삭제
+        # 삭제 
         post.delete()
-        # 목록 페이지 실행
         return redirect('/blog/')
-    # get방식의 경우 remove_post.html 화면을 실행
+    # get일때는 그냥 페이지 보여줌 
     return render(request, 'main/remove_post.html',{'Post':post})

@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    장고 첫 페이지
+    <header>
+        <h1>django</h1>
+        <nav>
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/blog">post</a></li>
+                <li><a href="">sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div>
+            <h2>장고 첫 페이지 입니다.</h2>
+            
+        </div>
+    </section>
+    <footer>
+        하단 입니다.
+    </footer>
 </body>
 </html>

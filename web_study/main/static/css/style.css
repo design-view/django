@@ -1,0 +1,67 @@
+* { margin:0; padding: 0; box-sizing: border-box;}
+html { height: 100%;}
+:root {
+    --main-border-color: #dab3d7;
+    --main-button-color: #a66091;
+  }
+body {
+    font-family:"나눔고딕";
+    font-size: 14px;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+body > section {
+    
+    padding: 50px 0;
+    line-height: 42px;
+    height: 100%;
+    background-image: linear-gradient(to top, #fad0c4 0%, #fce7fc 100%); 
+}
+body > section > div {
+    width:100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+}
+header ul {
+    display: flex;
+}
+header ul li {
+    padding: 0 20px;
+}
+li { list-style: none;}
+
+.board li {
+    border-bottom: 1px solid var(--main-border-color) ;
+    display: flex;
+}
+.board li span:nth-child(1) {
+    width: 100px;
+    text-align: center;
+}
+h2 { padding-bottom: 20px; font-size: 24px; font-weight: normal;}
+a { color: inherit; text-decoration: none;}
+footer {
+    height: 80px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.btn button {
+    background-color: var(--main-button-color);
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    outline: none;  
+}
+.bb { border-bottom: 1px solid var(--main-border-color);}
+.delbtn { background-color: var(--main-button-color); color: #fff; padding: 0 10px;
+display: inline-block; height: 24px; line-height: 24px; margin-top: 10px; margin-left: 20px;}

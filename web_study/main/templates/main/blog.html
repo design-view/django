@@ -3,30 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog List</title>
-    <style>
-        table,td,th{
-            border: 1px solid black;
-        }
-    </style>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>게시판 페이지 입니다.</h1>
-    <table>
-        <tr>
-            <th>글번호</th>
-            <th>제목</th>
-            <th>내용</th>
-        </tr>
-        {% for post in postlist %}
-        <tr>
-            <td>{{post.id}}</td>
-            <td><a href="{{post.pk}}">{{post.postname}}</a></td>
-            <td>{{post.contents}}</td>
-            <td><a href="/blog/{{post.pk}}/remove">삭제</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-    <button><a href="new_post/">글쓰기</a></button>
+    <header>
+        <h1>django</h1>
+        <nav>
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/blog">post</a></li>
+                <li><a href="">sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="board">
+            <h2>게시판 페이지 입니다.</h2>
+            <ul>
+                <li>
+                    <span>글번호</span>
+                    <span>글제목</span>
+                </li>
+            {% for post in postlist %}
+                <li>
+                    <span>{{post.id}}</span>
+                    <span><a href="{{post.pk}}">{{post.postname}}</a></span>
+                    <a href="/blog/{{post.pk}}/remove"  class="delbtn">삭제</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <div class="btn">
+                <button><a href="new_post/">글쓰기</a></button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        하단 입니다.
+    </footer>
 </body>
 </html>

@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글 삭제</title>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <form method="POST">
-        {% csrf_token %}
-        <h3>{{Post.postname}} - 삭제하기</h3>
-        <input type="submit" value="삭제">
-    </form>
-</body>
+    <body>
+        <header>
+            <h1>django</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">home</a></li>
+                    <li><a href="/blog">post</a></li>
+                    <li><a href="">sitemap</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="board">     
+                <form method="POST">
+                    {%csrf_token%}
+                    <h2>{{Post.postname}}글 삭제</h2>
+                    <input type="submit" value="삭제">
+                </form>
+            </div>
+        </section>
+    </body>
 </html>

@@ -3,16 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posting!</title>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <h1>게시글 상세 페이지입니다.</h1>
-    <p>{{post.postname}}</p>
-    <p>{{post.contents}}</p>
-    {% if post.mainphoto %}
-    <img src="{{post.mainphoto.url}}" alt="" height="600">
-    <br>
-    {% endif %}
-    <a href="/blog/">목록</a>
-</body>
+    <body>
+        <header>
+            <h1>django</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">home</a></li>
+                    <li><a href="/blog">post</a></li>
+                    <li><a href="">sitemap</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="board">
+                <h2>게시글 개별 페이지입니다</h2>
+                <p class="bb">{{post.postname}}</p>
+                <p class="bb">{{post.contents}}</p>
+                {% if post.mainphoto %}
+                <img src="{{post.mainphoto.url}}" alt="" height="600">
+                <br>
+                {% endif %}
+                <a href="/blog/">목록</a>
+            </div>
+            <div class="btn">
+                <button><a href="/blog">목록</a></button>
+                <button><a href="/new_post">게시글작성</button>
+            </div>
+        </section>
+    </body>
 </html>
